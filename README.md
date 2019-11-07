@@ -14,11 +14,26 @@ This application is a peer-to-peer alternative for popular chat applications lik
 
 This project is built using [Flutter](https://flutter.dev/), mainly for cross platform mobile support but also for the ability to target other platforms in the future.
 
-Currently version [insert version] is being used
+Currently version 1.7.3 is being used.
 ## Compiling
-[TODO]
+
+To compile run
+```
+flutter build <target>
+```
+For help choosing a target run
+```
+flutter help build
+```
 ## Installation
-[TODO]
+
+To install on a connected device run
+```
+flutter install [args]
+```
+
+A precompiled version will be available on the Google Play Store in the future
+
 ## Contributing
 
 We welcome contributions to this project.
