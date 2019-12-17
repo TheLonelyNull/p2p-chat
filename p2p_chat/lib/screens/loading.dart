@@ -18,6 +18,7 @@ class LoadingScreenState extends State<LoadingScreen> {
     'assets/Connecting.flr',
     animation: _animationType,
   );
+  static bool finished = false;
 
   @override
   void initState() {
@@ -26,7 +27,8 @@ class LoadingScreenState extends State<LoadingScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext topcontext) {
+    print("Top context");
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 62, 67, 91),
       body: SafeArea(
@@ -37,6 +39,7 @@ class LoadingScreenState extends State<LoadingScreen> {
           child: BlocBuilder(
             bloc: _loadingBloc,
             builder: (BuildContext context, LoadingState state) {
+              print("State:"+state.toString());
               if (state is LoadingInitialState) {
                 _animationType = "Searching";
                 _loadAnimation = FlareActor(
@@ -45,15 +48,19 @@ class LoadingScreenState extends State<LoadingScreen> {
                 );
               } else if (state is LoadingSuccessState) {
                 //timer pushes next screen after the animation is complete
-                new Timer(const Duration(seconds: 2), () {
-                  //todo push and pop to app main screen
-                  print("Push new screen");
-                });
-                _animationType = "Connected";
-                _loadAnimation = FlareActor(
-                  'assets/Connecting.flr',
-                  animation: _animationType,
-                );
+                //check if success has already happended before to avoid weird repetition glitch
+                if (!finished) {
+                  finished = true;
+                  Future.delayed(const Duration(seconds: 2), () {
+                    Navigator.popAndPushNamed(topcontext, '/home');
+                    print("What");
+                  });
+                  _animationType = "Connected";
+                  _loadAnimation = FlareActor(
+                    'assets/Connecting.flr',
+                    animation: _animationType,
+                  );
+                }
               } else if (state is LoadingErrorState) {
                 _animationType = "Error";
                 _loadAnimation = FlareActor(
