@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/loading.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: LoadingScreen(),
     );
   }
 }
@@ -65,6 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+    //Navigator.push(context, MaterialPageRoute(builder: (context) => LoadingScreen()));
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
