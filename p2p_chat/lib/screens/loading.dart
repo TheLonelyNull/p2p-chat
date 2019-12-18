@@ -27,7 +27,7 @@ class LoadingScreenState extends State<LoadingScreen> {
   }
 
   @override
-  Widget build(BuildContext topcontext) {
+  Widget build(BuildContext context) {
     print("Top context");
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 62, 67, 91),
@@ -52,7 +52,7 @@ class LoadingScreenState extends State<LoadingScreen> {
                 if (!finished) {
                   finished = true;
                   Future.delayed(const Duration(seconds: 2), () {
-                    Navigator.popAndPushNamed(topcontext, '/home');
+                    Navigator.pushReplacementNamed(context, '/home');
                     print("What");
                   });
                   _animationType = "Connected";
@@ -74,9 +74,5 @@ class LoadingScreenState extends State<LoadingScreen> {
         ),
       )),
     );
-  }
-
-  _handleSuccess() {
-    print("Done");
   }
 }
