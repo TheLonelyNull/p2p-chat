@@ -18,18 +18,31 @@ class HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _key,
-      appBar: AppBar(
-        title: Text('P2P chat'),
-        backgroundColor: Color.fromARGB(255, 62, 67, 91),
-        leading: IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: () {
-              _key.currentState.openDrawer();
-            }),
-      ),
-      drawer: _buildDrawer(),
+    //todo create pages for chat, calls and contacts
+    final _tabPages = <Widget>[Container(), Container(), Container()];
+
+    final _tabs = <Tab>[
+      Tab(icon: Icon(Icons.chat), text: "Chats"),
+      Tab(icon: Icon(Icons.call), text: "Calls"),
+      Tab(icon: Icon(Icons.contacts), text: "Contacs")
+    ];
+
+    return DefaultTabController(
+      length: _tabs.length,
+      child: Scaffold(
+          key: _key,
+          appBar: AppBar(
+            title: Text('P2P chat'),
+            backgroundColor: Color.fromARGB(255, 62, 67, 91),
+            leading: IconButton(
+                icon: Icon(Icons.menu),
+                onPressed: () {
+                  _key.currentState.openDrawer();
+                }),
+            bottom: TabBar(tabs: _tabs),
+          ),
+          drawer: _buildDrawer(),
+          body: TabBarView(children: _tabPages)),
     );
   }
 
