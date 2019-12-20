@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'chatOverview.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -12,14 +13,9 @@ class HomeScreenState extends State<HomeScreen> {
   final Color _drawerColour = Color.fromARGB(255, 62, 67, 91);
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     //todo create pages for chat, calls and contacts
-    final _tabPages = <Widget>[Container(), Container(), Container()];
+    final _tabPages = <Widget>[ChatOverviewScreen(), Container(), Container()];
 
     final _tabs = <Tab>[
       Tab(icon: Icon(Icons.chat), text: "Chats"),
