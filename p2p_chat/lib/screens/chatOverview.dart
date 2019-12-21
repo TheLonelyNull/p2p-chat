@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart';
+import '../utilWidgets/textCircleWidget.dart';
 
 class ChatOverviewScreen extends StatefulWidget {
   ChatOverviewScreen({Key key}) : super(key: key);
@@ -103,26 +104,5 @@ class ChatPreviewWidget extends StatelessWidget {
             ],
           )),
     );
-  }
-}
-
-class TextCircleWidget extends StatelessWidget {
-  Color color;
-  String text;
-
-  TextCircleWidget({Key key, this.color, this.text}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        padding: EdgeInsets.all(10),
-        height: 90,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(color: this.color, shape: BoxShape.circle),
-        child: Text(this.text,
-            style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-                color: Colors.white)));
   }
 }
