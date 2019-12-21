@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:badges/badges.dart';
 
 class ChatOverviewScreen extends StatefulWidget {
   ChatOverviewScreen({Key key}) : super(key: key);
@@ -14,10 +15,20 @@ class ChatOverviewState extends State<ChatOverviewScreen> {
       body: ListView(
         children: <Widget>[
           ChatPreviewWidget(
-              unreadCount: 5,
+              unreadCount: 113,
               username: "Christoff Rossouw",
               previewText: "Hi there",
-              profileImageURL: null)
+              profileImageURL: null),
+          ChatPreviewWidget(
+              unreadCount: 113,
+              username: "Christoff Rossouw",
+              previewText: "Hi there",
+              profileImageURL: null),
+          ChatPreviewWidget(
+              unreadCount: 113,
+              username: "Christoff Rossouw",
+              previewText: "Hi there",
+              profileImageURL: null),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -45,24 +56,53 @@ class ChatPreviewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: double.infinity,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            TextCircleWidget(color: Colors.blueAccent, text: "CR"),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(this.username,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                Text(this.previewText)
-              ],
-            )
-          ],
-        ));
+    String _unreadCountString = this.unreadCount.toString();
+    if (this.unreadCount > 99) {
+      _unreadCountString = "99+";
+    }
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            border: Border(
+              bottom: BorderSide(color: Color(0xFF565973), width: 0.2),
+            ),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              TextCircleWidget(color: Colors.blueAccent, text: "CR"),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(this.username,
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  Text(this.previewText)
+                ],
+              ),
+              SizedBox(
+                width: 40,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Badge(
+                    badgeContent: Text(
+                      _unreadCountString,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    badgeColor: Colors.blueAccent,
+                    padding: EdgeInsets.all(8),
+                  )
+                ],
+              )
+            ],
+          )),
+    );
   }
 }
 
