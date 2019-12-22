@@ -1,30 +1,33 @@
 import 'package:flutter/material.dart';
 import '../utilWidgets/textCircleWidget.dart';
-import 'package:intl/intl.dart';
 
-class CallsScreen extends StatelessWidget {
-  CallsScreen({Key key}) : super(key: key);
+class ContactScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => ContactScreenState();
+}
 
+class ContactScreenState extends State<ContactScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton:
-          FloatingActionButton(child: Icon(Icons.add_call), onPressed: () {}),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.person_add),
+      ),
       body: ListView(
         children: <Widget>[
-          CallLogWidget(username: "Christoff Rossouw", profileImageURL: "", callDate: DateTime.now(),)
+          ContactWidget(username: "Christoff Rossouw", profilePhotoURL: "",)
         ],
       ),
     );
   }
 }
 
-class CallLogWidget extends StatelessWidget {
+class ContactWidget extends StatelessWidget {
   String username;
-  DateTime callDate;
-  String profileImageURL;
+  String profilePhotoURL;
 
-  CallLogWidget({Key key, this.username, this.callDate, this.profileImageURL})
+  ContactWidget({Key key, this.username, this.profilePhotoURL})
       : super(key: key);
 
   @override
@@ -54,12 +57,15 @@ class CallLogWidget extends StatelessWidget {
                   children: <Widget>[
                     Text(this.username,
                         style:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                    Text(DateFormat.Md().add_jm().format(this.callDate))
+                            TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                   ],
                 ),
                 SizedBox(
                   width: 40,
+                ),
+                IconButton(
+                  icon: Icon(Icons.chat),
+                  onPressed: () {},
                 ),
                 IconButton(
                   icon: Icon(Icons.call),

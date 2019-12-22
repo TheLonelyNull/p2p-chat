@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'chatOverview.dart';
 import 'calls.dart';
+import 'contacts.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -15,11 +16,10 @@ class HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    //todo create pages for chat, calls and contacts
     final _tabPages = <Widget>[
       ChatOverviewScreen(),
       CallsScreen(),
-      Container()
+      ContactScreen()
     ];
 
     final _tabs = <Tab>[
