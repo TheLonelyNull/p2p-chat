@@ -78,11 +78,13 @@ class HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 40,
                 ),
-                _buildRow(Icons.person, "Edit Profile", "/editProfile"),
+                _buildRow(Icons.person, "Change Profile Photo", "/editProfile"),
                 _buildDivider(),
                 _buildRow(Icons.share, "Share Profile", "/shareProfile"),
                 _buildDivider(),
-                _buildRow(Icons.lock, "Edit Encryption Keys", "/editKeys")
+                _buildRow(Icons.lock, "Edit Encryption Keys", "/editKeys"),
+                _buildDivider(),
+                _buildRow(Icons.network_check, "Network Settings", "/editKeys")
               ],
             ),
           )),
