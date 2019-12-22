@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'chatOverview.dart';
-import 'calls.dart';
-import 'contacts.dart';
+import 'package:p2p_chat/screens/screens.dart';
+import 'widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -117,22 +116,3 @@ class HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class OvalClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    var path = Path();
-    path.lineTo(0, 0);
-    path.lineTo(size.width - 40, 0);
-    path.quadraticBezierTo(
-        size.width, size.height / 4, size.width, size.height / 2);
-    path.quadraticBezierTo(size.width, size.height - (size.height / 4),
-        size.width - 40, size.height);
-    path.lineTo(0, size.height);
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return true;
-  }
-}

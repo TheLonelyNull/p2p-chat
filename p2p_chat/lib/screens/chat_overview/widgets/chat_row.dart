@@ -1,37 +1,27 @@
 import 'package:flutter/material.dart';
-import '../utilWidgets/textCircleWidget.dart';
+import 'package:badges/badges.dart';
+import 'package:p2p_chat/util_widgets/util_widgets.dart';
 
-class ContactScreen extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => ContactScreenState();
-}
-
-class ContactScreenState extends State<ContactScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.person_add),
-      ),
-      body: ListView(
-        children: <Widget>[
-          ContactWidget(username: "Christoff Rossouw", profilePhotoURL: "",)
-        ],
-      ),
-    );
-  }
-}
-
-class ContactWidget extends StatelessWidget {
+class ChatPreviewWidget extends StatelessWidget {
   String username;
-  String profilePhotoURL;
+  String previewText;
+  int unreadCount;
+  String profileImageURL;
 
-  ContactWidget({Key key, this.username, this.profilePhotoURL})
+  ChatPreviewWidget(
+      {Key key,
+        this.username,
+        this.previewText,
+        this.unreadCount,
+        this.profileImageURL})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String _unreadCountString = this.unreadCount.toString();
+    if (this.unreadCount > 99) {
+      _unreadCountString = "99+";
+    }
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
@@ -48,28 +38,31 @@ class ContactWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 TextCircleWidget(color: Colors.blueAccent, text: "CR"),
-                SizedBox(
-                  width: 10,
-                ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(this.username,
                         style:
-                            TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                    Text(this.previewText)
                   ],
                 ),
                 SizedBox(
                   width: 40,
                 ),
-                IconButton(
-                  icon: Icon(Icons.chat),
-                  onPressed: () {},
-                ),
-                IconButton(
-                  icon: Icon(Icons.call),
-                  onPressed: (){},
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Badge(
+                      badgeContent: Text(
+                        _unreadCountString,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      badgeColor: Colors.blueAccent,
+                      padding: EdgeInsets.all(8),
+                    )
+                  ],
                 )
               ],
             )),

@@ -2,7 +2,7 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:async';
-import '../bloc/bloc.dart';
+import 'package:p2p_chat/bloc/bloc.dart';
 
 class LoadingScreen extends StatefulWidget {
   LoadingScreen({Key key}) : super(key: key);
@@ -53,7 +53,6 @@ class LoadingScreenState extends State<LoadingScreen> {
                   finished = true;
                   Future.delayed(const Duration(seconds: 2), () {
                     Navigator.pushReplacementNamed(context, '/home');
-                    print("What");
                   });
                   _animationType = "Connected";
                   _loadAnimation = FlareActor(
