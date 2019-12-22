@@ -83,7 +83,9 @@ class HomeScreenState extends State<HomeScreen> {
                 _buildDivider(),
                 _buildRow(Icons.lock, "Edit Encryption Keys", "/editKeys"),
                 _buildDivider(),
-                _buildRow(Icons.network_check, "Network Settings", "/editKeys")
+                _buildRow(Icons.network_check, "Network Settings", "/networkSettings"),
+                _buildDivider(),
+                _buildRow(Icons.insert_chart, "Statistics", "/stats")
               ],
             ),
           )),
